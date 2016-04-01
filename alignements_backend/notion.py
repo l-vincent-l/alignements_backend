@@ -19,7 +19,7 @@ class Notion(object):
 
     @classmethod
     def add_uri(cls, uris):
-        DB.sadd(cls.make_id(uris[0]), uris[1:])
+        DB.sadd(cls.make_id(uris[0]), *uris[1:])
 
     @classmethod
     def get_uris(cls, uri):
