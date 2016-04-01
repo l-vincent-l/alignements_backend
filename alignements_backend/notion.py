@@ -23,4 +23,5 @@ class Notion(object):
 
     @classmethod
     def get_uris(cls, uri):
-        return list(DB.sscan_iter(cls.make_id(uri)))
+        return list(map(lambda b: b.decode('utf8'),
+            DB.sscan_iter(cls.make_id(uri))))
