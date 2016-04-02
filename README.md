@@ -21,7 +21,7 @@ Example
 Add a notion
 ------------
 
-`curl -H "Content-Type: application/json" -H "Accept: application/json" -X POST -d '["http://1", "http://2"] http://localhost:8000/notions/'`
+`curl -H "Content-Type: application/json" -H "Accept: application/json" -X POST -d '["", ]' http://163.172.140.176/notions/`
 
 Query a notion
 ---------------
