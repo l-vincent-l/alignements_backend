@@ -4,12 +4,11 @@ from hashlib import md5
 
 class Notion(object):
     def __init__(self, *uris):
-        if len(uris) < 2:
-            raise ValueError()
         self.uris = list(filter(lambda s: s and len(s) > 0, uris))
         for uri in self.uris:
             self.uris.extend(self.get_uris(uri))
-        self.add_to_db()
+        if len(self.uris) > 1:
+            self.add_to_db()
 
     def add_to_db(self):
         list(map(self.add_uri, permutations(self.uris)))
