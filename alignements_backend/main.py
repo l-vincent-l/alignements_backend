@@ -3,6 +3,7 @@ from falcon_cors import CORS
 from alignements_backend.notion import Notion
 from alignements_backend.variable import Variable
 from alignements_backend.middlewares import RequireJSON, JSONTranslator
+from urllib import unquote
 
 
 class NotionsResource:
@@ -20,7 +21,7 @@ class NotionsResource:
     def on_get(self, req, resp):
         if not 'uri' in req.params:
             raise falcon.HTTPBadRequest('uri param needed')
-        uri = req.params['uri']
+        uri = unquote(req.params['uri']).decode('utf8')
         uris = Notion.get_uris(uri)
         if not uri:
             resp.status = falcon.HTTP_404
