@@ -7,8 +7,9 @@ class Notion(object):
         if len(uris) < 2:
             raise ValueError()
         self.uris = list(filter(lambda s: s and len(s) > 0, uris))
+        for uri in self.uris:
+            self.uris.extend(self.get_uris(uri))
         self.add_to_db()
-        self.uris = self.get_uris(self.uris[0])
 
     def add_to_db(self):
         list(map(self.add_uri, permutations(self.uris)))
