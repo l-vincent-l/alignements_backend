@@ -1,4 +1,5 @@
 import falcon, json
+from falcon_cors import CORS
 from alignements_backend.notion import Notion
 from alignements_backend.middlewares import RequireJSON, JSONTranslator
 
@@ -24,11 +25,12 @@ class NotionsResource:
         else:
             resp.status = falcon.HTTP_200
             req.context['result'] = uris
-
+public_cors = CORS(allow_all_origins=True)
 app = falcon.API(
     middleware=[
     RequireJSON(),
-    JSONTranslator()
+    JSONTranslator(),
+    public_cors.middleware
     ]
 )
 
