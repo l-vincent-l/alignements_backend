@@ -21,7 +21,7 @@ class NotionsResource:
     def on_get(self, req, resp):
         if not 'uri' in req.params:
             raise falcon.HTTPBadRequest('uri param needed')
-        uri = unquote(req.params['uri']).decode('utf8')
+        uri = unquote(req.params['uri'])
         uris = Notion.get_uris(uri)
         if not uri:
             resp.status = falcon.HTTP_404
@@ -42,6 +42,7 @@ class VariableResource:
 
 public_cors = CORS(allow_all_origins=True, allow_all_headers=True,
         allow_all_methods=True, allow_credentials_all_origins=True)
+
 app = falcon.API(
     middleware=[
     RequireJSON(),
