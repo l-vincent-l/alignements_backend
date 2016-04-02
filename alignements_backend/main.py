@@ -3,7 +3,7 @@ from falcon_cors import CORS
 from alignements_backend.notion import Notion
 from alignements_backend.variable import Variable
 from alignements_backend.middlewares import RequireJSON, JSONTranslator
-from urllib import unquote
+from urllib.parse import unquote
 
 
 class NotionsResource:
