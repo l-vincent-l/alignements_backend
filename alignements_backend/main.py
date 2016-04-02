@@ -53,8 +53,8 @@ app = falcon.API(
 notions = NotionsResource()
 variables = VariableResource()
 app.add_route('/notions/', notions)
-app.add_route('/variables/{var_name}/', VariableResource())
-app.add_route('/variables/{var_name}', VariableResource())
+app.add_route('/variables/{var_name}/', variables)
+app.add_route('/variables/{var_name}', variables)
 
 if __name__ == '__main__':
     httpd = simple_server.make_server('127.0.0.1', 8000, app)
