@@ -7,4 +7,7 @@ class Variable(object):
 
     @classmethod
     def get_from_id(cls, var_name):
-        return DB.get(cls.make_id(var_name)).decode('utf8')
+        id_ = DB.get(cls.make_id(var_name))
+        if id_:
+            return id_.decode('utf8')
+        return None
